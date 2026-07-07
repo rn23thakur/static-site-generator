@@ -5,11 +5,8 @@ before that it empties the destination directory.
 from pathlib import Path
 import shutil
 
-# Using Path.home() / ... to properly resolve the "~" home directory shortcut
-SOURCE = Path.home() / "workspace/boot-dev/static-site-generator/static"
-DESTINATION = Path.home() / "workspace/boot-dev/static-site-generator/public"
 
-def transfer_contents():
+def transfer_contents(SOURCE, DESTINATION):
     # 1. Validation Checks
     if not SOURCE.exists():
         raise FileNotFoundError(f"Source path '{SOURCE}' doesn't exist.")
