@@ -4,7 +4,7 @@ from pathlib import Path
 from markdown import markdown_to_html_node
 from title_util import extract_title
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, basepath):
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
 
     with open(from_path, "r") as markdown_file:
@@ -18,7 +18,7 @@ def generate_page(from_path, template_path, dest_path):
 
     title = extract_title(markdown_text)
 
-    final_html = template_text.replace("{{ Title }}", title).replace("{{ Content }}", html_text)
+    final_html = template_text.replace("{{ Title }}", title).replace("{{ Content }}", html_text).replace('href="/', f'href="{basepath}').replace('src="/', f'src="{basepath}')
 
     folder_path = os.path.dirname(dest_path)
 
@@ -30,7 +30,7 @@ def generate_page(from_path, template_path, dest_path):
         print(f"writing html content here: {dest_path}")
         file.write(final_html)
 
-def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, basepath):
     # Ensure variables are Path objects so / operator works
     dir_path_content = Path(dir_path_content)
     dest_dir_path = Path(dest_dir_path)
@@ -44,7 +44,7 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
             dest_item.mkdir(parents=True, exist_ok=True)
             
             # Recurse deeper into the sub-directory
-            generate_pages_recursive(item, template_path, dest_item)
+            generate_pages_recursive(item, template_path, dest_item, basepath)
             
         else:
             # Check if the file is a markdown file
@@ -53,4 +53,4 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
                 dest_html_path = dest_item.with_suffix('.html')
                 
                 # Calls your generation function with the new HTML path
-                generate_page(item, template_path, dest_html_path)
+                generate_page(item, template_path, dest_html_path, basepath)

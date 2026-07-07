@@ -1,0 +1,228 @@
+/* ==========================================================================
+   Catppuccin Mocha theme
+   Nerd Font stack + terminal-inspired accents
+   ========================================================================== */
+
+:root {
+  /* Catppuccin Mocha palette */
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
+  --surface0: #313244;
+  --surface1: #45475a;
+  --surface2: #585b70;
+  --overlay0: #6c7086;
+  --overlay1: #7f849c;
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
+}
+
+body {
+  background-color: var(--base);
+  color: var(--text);
+  font-family: "JetBrainsMono Nerd Font", "FiraCode Nerd Font", "Cascadia Code",
+    "Fira Code", monospace;
+  line-height: 1.7;
+  margin: 0;
+  padding: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+}
+
+b,
+strong {
+  font-weight: 700;
+  color: var(--peach);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--mauve);
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  text-shadow: none;
+}
+
+h1 {
+  font-size: 2.2em;
+  border-bottom: 2px solid var(--surface1);
+  padding-bottom: 0.3em;
+}
+h1::before {
+  content: "❯ ";
+  color: var(--green);
+}
+
+h2 {
+  font-size: 1.7em;
+}
+h2::before {
+  content: "❯❯ ";
+  color: var(--teal);
+  font-size: 0.7em;
+}
+
+h3 {
+  font-size: 1.35em;
+  color: var(--blue);
+}
+
+h4,
+h5,
+h6 {
+  font-size: 1.1em;
+  color: var(--sapphire);
+}
+
+a {
+  color: var(--sky);
+  text-decoration: none;
+  border-bottom: 2px solid var(--sapphire);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+a:hover {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+
+ul,
+ol {
+  padding-left: 30px;
+}
+ul li::marker {
+  color: var(--teal);
+}
+ol li::marker {
+  color: var(--peach);
+  font-weight: 600;
+}
+
+code {
+  background-color: var(--surface0);
+  border-radius: 6px;
+  color: var(--yellow);
+  padding: 0.2em 0.5em;
+  font-family: "JetBrainsMono Nerd Font", "FiraCode Nerd Font", "Fira Code",
+    monospace;
+  font-size: 0.9em;
+}
+
+pre code {
+  padding: 0;
+  color: var(--text);
+}
+
+pre {
+  background-color: var(--mantle);
+  border: 1px solid var(--surface0);
+  border-radius: 8px;
+  padding: 1.2em 1em 1em;
+  overflow: auto;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
+  position: relative;
+}
+
+/* faux terminal window dots */
+pre::before {
+  content: "● ● ●";
+  display: block;
+  letter-spacing: 4px;
+  color: var(--surface2);
+  font-size: 0.75em;
+  margin-bottom: 0.8em;
+}
+
+blockquote {
+  background-color: var(--mantle);
+  border-left: 4px solid var(--mauve);
+  padding-left: 1.5em;
+  margin-left: 0;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  padding-right: 0.8em;
+  color: var(--subtext1);
+  font-style: italic;
+  border-radius: 0 6px 6px 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 3px solid var(--surface0);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  border: 1px solid var(--surface1);
+  padding: 0.5em 0.8em;
+}
+th {
+  background-color: var(--surface0);
+  color: var(--peach);
+}
+tr:nth-child(even) {
+  background-color: var(--mantle);
+}
+
+hr {
+  border: none;
+  border-top: 1px dashed var(--surface2);
+  margin: 2em 0;
+}
+
+::selection {
+  background-color: var(--mauve);
+  color: var(--crust);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--base);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--surface1);
+  border-radius: 6px;
+  border: 3px solid var(--base);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--surface2);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface1) var(--base);
+}
+::-webkit-scrollbar-corner {
+  background: var(--base);
+}
